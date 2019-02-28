@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import './app.css';
 import { Provider } from 'react-redux';
 // import { ConnectedRouter as Router } from 'react-router-redux';
 import { history, store } from './services/configure-store';
