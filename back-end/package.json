@@ -7,14 +7,6 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/julia-mur13/schedule.git"
-  },
   "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/julia-mur13/schedule/issues"
-  },
-  "homepage": "https://github.com/julia-mur13/schedule#readme"
+  "license": "ISC"
 }
