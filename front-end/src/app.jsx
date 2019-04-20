@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import './app.css';
 import { Provider } from 'react-redux';
-// import { ConnectedRouter as Router } from 'react-router-redux';
 import { history, store } from './services/configure-store';
 import Main from './main/containers/main';
-import Router from "react-router-dom/es/Router";
+import { Router }  from "react-router-dom";
 
 class App extends Component {
     render() {

@@ -1,3 +1,3 @@
-@import url('./main/containers/main.less');
-@import url('./components/hello-header/hello-header.less');
-@import url('./scenes/hello-page/hello-page.less');
+@import url('main/containers/main.scss');
+@import url('scenes/hello-page/hello-page.scss');
+@import url('core/components/header/header.scss');

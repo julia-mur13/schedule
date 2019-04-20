@@ -1,36 +1,26 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {withRouter} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
-import HelloHeader from '../../components/hello-header/hello-header';
+import Header from '../../core/components/header/header';
+import './hello-page.scss';
 
 class HelloPage extends React.Component {
     render() {
         return (
             <div className="hello-page">
-                <HelloHeader/>
-                <div className="hello-page-text">
-                    <p>Здравствуйте! Вам необходимо&nbsp;
-                        <a href="https://www.google.com">авторизоваться</a>.
-                    </p>
-                    <p>Если вы впервые на нашем сайте,&nbsp;
-                        <a href="https://www.google.com">зарегистрируйтесь</a>.
-                    </p>
+                <Header userLogOut={true}/>
+                <div className="hello-page-container">
+                    <div className="text-wrapper">
+                        <p className="text">Здравствуйте! Вам необходимо&nbsp;
+                            <Link to="/login">авторизоваться</Link>.
+                            <br/>Если вы впервые на нашем сайте,&nbsp;
+                            <Link to="/registration">зарегистрируйтесь</Link>.
+                        </p>
+                    </div>
                 </div>
             </div>
         );
     }
 }
 
-function mapStateToProps() {
-    return {
-        isReady: true,
-    };
-}
-
-HelloPage.defaultProps = {
-    email: '',
-};
-
-
-export default withRouter(connect(mapStateToProps)(HelloPage));
+export default HelloPage;

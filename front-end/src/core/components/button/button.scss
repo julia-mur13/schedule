@@ -1,0 +1,10 @@
+.general-button {
+  background-color: #1b1d1e;
+  color: #fff;
+  border-color: #1b1d1e;
+  &:focus, &:hover {
+    border-color: #1b1d1e;
+    background-color: #1b1d1e;
+    opacity: .8;
+  }
+}

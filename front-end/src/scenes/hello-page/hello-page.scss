@@ -1,0 +1,40 @@
+.hello-page {
+  background: #1b1d1e;
+  height: 100vh;
+
+  .hello-page-container {
+    width: 100%;
+    min-width: 300px;
+    display: flex;
+    height: calc(100% - 85px);;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-family: 'Poiret One', cursive;
+    font-size: 25px;
+    font-weight: normal;
+    letter-spacing: 3px;
+  }
+
+  .text-wrapper a {
+    color: #fff;
+    text-decoration: underline #fff;
+  }
+
+  .text-wrapper {
+    width: 80%;
+    .text {
+      text-align: center;
+    }
+  }
+
+}
+
+@media screen and (max-width: 920px) {
+  .hello-page {
+    .hello-page-container {
+      font-size: 17px;
+    }
+  }
+}
