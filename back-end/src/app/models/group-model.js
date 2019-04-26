@@ -1,74 +1,36 @@
 const db = require('../../config/connection-mysql');
 
+function generateId() {
+  return Number((Date.now()) + Math.floor(Math.random())) / 100000;
+}
+
 const groupModel = {
-  getGroups() {
+  sendRequest(dbQuery) {
     return new Promise((resolve, reject) => {
-      db.query('SELECT * FROM `group`', (error, rows) => {
+      db.query(dbQuery, (error, res) => {
         if (error) {
           reject(error);
         }
-        resolve(rows);
+        resolve(res);
       });
     });
   },
 
-//   function getUserById(id)
-// {
-//   return new Promise((resolve, reject) => {
-//     db.query('SELECT * FROM test WHERE id =' + id.id, (error, rows, fields) => {
-//       if (!!error) {
-//         dbFunc.connectionRelease;
-//         reject(error);
-//       } else {
-//         dbFunc.connectionRelease;
-//         resolve(rows);
-//       }
-//     });
-//   });
-// }
-//
-// function addUser(user) {
-//   return new Promise((resolve, reject) => {
-//     db.query('INSERT INTO test(name,age,state,country)VALUES(\'' + user.name + '\',\'' + user.age + '\',\'' + user.state + '\',\'' + user.country + '\')', (error, rows, fields) => {
-//       if (error) {
-//         dbFunc.connectionRelease;
-//         reject(error);
-//       } else {
-//         dbFunc.connectionRelease;
-//         resolve(rows);
-//       }
-//     });
-//   });
-// }
-//
-//
-// function updateUser(id, user) {
-//   return new Promise((resolve, reject) => {
-//     db.query('UPDATE test set name=\'' + user.name + '\',age=\'' + user.age + '\',state=\'' + user.state + '\',country=\'' + user.country + '\' WHERE id=\'' + id + '\'', (error, rows, fields) => {
-//       if (!!error) {
-//         dbFunc.connectionRelease;
-//         reject(error);
-//       } else {
-//         dbFunc.connectionRelease;
-//         resolve(rows);
-//       }
-//     });
-//   })
-// }
-//
-// function deleteUser(id) {
-//   return new Promise((resolve, reject) => {
-//     db.query('DELETE FROM test WHERE id=\'' + id + '\'', (error, rows, fields) => {
-//       if (!!error) {
-//         dbFunc.connectionRelease;
-//         reject(error);
-//       } else {
-//         dbFunc.connectionRelease;
-//         resolve(rows);
-//       }
-//     });
-//   });
-// }
+  getGroups() {
+    return groupModel.sendRequest('SELECT * FROM `group`');
+  },
+
+  getGroup(group) {
+    return groupModel.sendRequest(`SELECT * FROM \`group\` WHERE \`group\` = ${group}`);
+  },
+
+  addGroup(group, subgroup) {
+    return groupModel.sendRequest(`INSERT INTO \`group\`(\`idGroup\`,\`group\`,\`subgroup\`)VALUES(${generateId()}, ${group}, ${subgroup})`);
+  },
+  // +
+  deleteGroup(group) {
+    return groupModel.sendRequest(`DELETE FROM \`group\` WHERE \`group\` = ${group}`);
+  },
 };
 
 module.exports = groupModel;

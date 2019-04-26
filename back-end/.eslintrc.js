@@ -2,16 +2,14 @@ module.exports = {
   "extends": "airbnb-base",
   'rules': {
     'no-console': 'off',
+    'no-shadow': 'off',
     'no-param-reassign': 'off',
-    'react/jsx-one-expression-per-line': 'false',
-    'react/prefer-stateless-function': 'false',
-    'react/jsx-filename-extension': 'false',
-    'react/jsx-tag-spacing': 0,
     'import/no-named-as-default': 0,
     'linebreak-style': 0,
     'function-paren-newline': ['error', 'consistent'],
     'object-curly-newline': ['error', { 'consistent': true }],
-    'class-methods-use-this': 'warn'
+    'class-methods-use-this': 'warn',
+    "prefer-destructuring": ["error", {"object": false, "array": false}]
   },
   'env': {
     'browser': true,

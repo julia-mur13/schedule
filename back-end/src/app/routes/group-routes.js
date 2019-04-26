@@ -1,7 +1,12 @@
-const groupController = require('../controllers/group-controller');
+const groupController = require('../controller/group-controller');
 
 module.exports = (app) => {
-  app.route('/groups')
+  app.route('/get-groups')
     .get(groupController.getGroups);
-  // .post(addGroup);
+  app.route('/get-group')
+    .post(groupController.getGroup);
+  app.route('/add-group')
+    .post(groupController.addGroup);
+  app.route('/delete-group')
+    .delete(groupController.deleteGroup);
 };
