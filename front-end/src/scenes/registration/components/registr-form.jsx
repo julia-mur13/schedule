@@ -1,28 +1,65 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {withRouter} from 'react-router-dom';
 
 import "./registr-form.scss";
 
 import {Form, Select, Input} from 'antd';
 import Button from '../../../core/components/button/button';
+import * as PropTypes from "prop-types";
 
 const Option = Select.Option;
 
 
 class RegistrationForm extends React.Component {
 
+    static propTypes = {
+        onClick: PropTypes.func.isRequired,
+    };
+
+    state = {
+        firstName: '',
+        middleName: '',
+        lastName: '',
+        email: '',
+        password: '',
+        role: 'Student',
+    };
+
+    setTextField = (event) => {
+        const field = event.target.id;
+        const value = event.target.value;
+        this.setState({
+            [field]: value || '',
+        });
+    };
+
+    setRoleField= (event) => {
+        this.setState({
+            role: event,
+        });
+    };
+
     handleSubmit = (e) => {
         e.preventDefault();
-        this.props.form.validateFields((err, values) => {
+        const {form, onClick} = this.props;
+        form.validateFieldsAndScroll((err) => {
+            console.log(onClick);
             if (!err) {
-                console.log('Received values of form: ', values);
+                onClick({
+                    firstName: this.state.firstName,
+                    middleName: this.state.middleName,
+                    lastName: this.state.lastName,
+                    email: this.state.email,
+                    password: this.state.password,
+                    role: this.state.role,
+                });
             }
         });
     };
 
     render() {
-        const {getFieldDecorator} = this.props.form;
+        const {form} = this.props;
+        const {getFieldDecorator} = form;
+
         return (
             <div className="wrapper-registration-form">
                 <Form onSubmit={this.handleSubmit} className="registration-form">
@@ -40,7 +77,10 @@ class RegistrationForm extends React.Component {
                                 message: 'Имя может содержать только буквы алфавита!',
                             }],
                         })(
-                            <Input className="custom-input" placeholder="Имя"/>
+                            <Input className="custom-input"
+                                   placeholder="Имя"
+                                   onBlur={this.setTextField}
+                            />
                         )}
                     </Form.Item>
 
@@ -57,7 +97,10 @@ class RegistrationForm extends React.Component {
                                 message: 'Отчество может содержать только буквы алфавита!',
                             }],
                         })(
-                            <Input className="custom-input" placeholder="Отчество"/>
+                            <Input className="custom-input"
+                                   placeholder="Отчество"
+                                   onBlur={this.setTextField}
+                            />
                         )}
                     </Form.Item>
 
@@ -74,7 +117,10 @@ class RegistrationForm extends React.Component {
                                 message: 'Фамилия может содержать только буквы алфавита!',
                             }],
                         })(
-                            <Input className="custom-input" placeholder="Фамилия"/>
+                            <Input className="custom-input"
+                                   placeholder="Фамилия"
+                                   onBlur={this.setTextField}
+                            />
                         )}
                     </Form.Item>
 
@@ -85,7 +131,10 @@ class RegistrationForm extends React.Component {
                                 message: 'Введите, пожалуйста, email!',
                             }],
                         })(
-                            <Input className="custom-input" placeholder="Email"/>
+                            <Input className="custom-input"
+                                   placeholder="Email"
+                                   onBlur={this.setTextField}
+                            />
                         )}
                     </Form.Item>
 
@@ -93,12 +142,19 @@ class RegistrationForm extends React.Component {
                         {getFieldDecorator('password', {
                             rules: [{required: true, message: 'Введите, пожалуйста, пароль!'}],
                         })(
-                            <Input className="custom-input" placeholder="Пароль"/>
+                            <Input className="custom-input"
+                                   placeholder="Пароль"
+                                   onBlur={this.setTextField}
+                            />
                         )}
                     </Form.Item>
 
                     <Form.Item>
-                        <Select className="custom-select" defaultValue="Студент">
+                        <Select className="custom-select"
+                                name="role"
+                                defaultValue="Студент"
+                                onChange={this.setRoleField}
+                        >
                             <Option value="Student">Студент</Option>
                             <Option value="Teacher">Преподаватель</Option>
                             <Option value="Manager">Диспетчер</Option>
@@ -107,7 +163,10 @@ class RegistrationForm extends React.Component {
                     </Form.Item>
 
                     <Form.Item>
-                        <Button text="Зарегистироваться"/>
+                        <Button className=""
+                                onClick={this.handleSubmit}
+                                text="Зарегистироваться"
+                        />
                     </Form.Item>
 
                 </Form>
@@ -116,29 +175,6 @@ class RegistrationForm extends React.Component {
     }
 }
 
-function mapStateToProps(state) {
-    return {
-        login: state.logInInformation.error,
-    };
-}
-
-function mapDispatch(dispatch){
-    return {
-        onLogIn: (username, password) => {
-            dispatch(logIn(username, password));
-        },
-        errorFalse: (username, password) => {
-            dispatch(getErrorFalse(username, password));
-        },
-        sendLogInData: (url, user, key) => {
-            const data = {
-                username: user,
-                password: key,
-            };
-            dispatch(logInData(url, data));
-        },
-    };
-}
 
 const WrapperRegistrationForm = Form.create()(RegistrationForm);
-export default withRouter(connect(mapStateToProps, mapDispatch)(WrapperRegistrationForm));
+export default WrapperRegistrationForm;

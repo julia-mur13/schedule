@@ -1,25 +1,20 @@
 import React from 'react';
 import connect from "react-redux/es/connect/connect";
 import {withRouter} from 'react-router-dom';
-import RegistrationForm from '../components/registr-form';
 
-import "./registration.scss";
+import "./all-schedules-page.scss";
 import {sendRegistrationData} from "../services/actions/actions";
 import * as PropTypes from "prop-types";
 
-class Registration extends React.Component {
+class AllSchedulesPage extends React.Component {
 
     static propTypes = {
         sendRegistrationData: PropTypes.func.isRequired,
     };
 
     render() {
-        const {sendRegistrationData} = this.props;
         return (
-            <div className="main-registration-wrapper">
-                <div className="main-content">
-                    <RegistrationForm onClick={sendRegistrationData}/>
-                </div>
+            <div>
             </div>
         );
     }
@@ -33,4 +28,4 @@ function mapDispatch(dispatch) {
     };
 }
 
-export default withRouter(connect(null, mapDispatch)(Registration));
+export default withRouter(connect(null, mapDispatch)(AllSchedulesPage));

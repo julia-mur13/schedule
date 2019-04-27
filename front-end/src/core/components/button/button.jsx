@@ -8,7 +8,7 @@ import {Button} from 'antd';
 class GeneralButton extends React.PureComponent {
     static propTypes = {
         text: PropTypes.string.isRequired,
-        className:  PropTypes.string.isRequired,
+        className: PropTypes.string.isRequired,
     };
 
     render() {

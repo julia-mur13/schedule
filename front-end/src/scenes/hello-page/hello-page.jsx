@@ -1,14 +1,12 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-import Header from '../../core/components/header/header';
 import './hello-page.scss';
 
 class HelloPage extends React.Component {
     render() {
         return (
             <div className="hello-page">
-                <Header userLogOut={true}/>
                 <div className="hello-page-container">
                     <div className="text-wrapper">
                         <p className="text">Здравствуйте! Вам необходимо&nbsp;

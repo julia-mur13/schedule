@@ -1,18 +1,21 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {withRouter, Link} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import * as PropTypes from "prop-types";
 
 import './header.scss';
+import connect from "react-redux/es/connect/connect";
+
+import HorizontalMenu from "../horizontal-menu/horizontal-menu";
 
 class Header extends React.PureComponent {
+
     static propTypes = {
-        userLogOut: PropTypes.bool.isRequired,
+        user: PropTypes.object.isRequired,
     };
 
-    rendeLinks() {
-        const {userLogOut} = this.props;
-        if(userLogOut){
+    renderLinks() {
+        const {user} = this.props;
+        if(user.role === 'GUEST') {
             return (
                 <div className="main-header-nav">
                     <Link className="header-link" to="/login">Авторизация</Link>
@@ -22,10 +25,7 @@ class Header extends React.PureComponent {
         }
         return (
             <div className="main-header-nav">
-                <Link className="header-link" to="/hello">Расписание</Link>
-                <Link className="header-link" to="/hello">Входные данные</Link>
-                <Link className="header-link" to="/hello">Чат</Link>
-                <Link className="header-link" to="/hello">Выйти</Link>
+                <HorizontalMenu/>
             </div>
         );
     }
@@ -34,21 +34,17 @@ class Header extends React.PureComponent {
         return (
             <header className="main-header">
                 <div className="header-logo">LOGO</div>
-                {this.rendeLinks()}
+                {this.renderLinks()}
             </header>
         );
     }
 }
 
-function mapStateToProps() {
+
+function mapStateToProps(state) {
     return {
-        isReady: true,
+        user: state.logInInformation.user,
     };
 }
 
-Header.defaultProps = {
-    email: '',
-};
-
-
-export default withRouter(connect(mapStateToProps)(Header));
+export default connect(mapStateToProps)(Header);

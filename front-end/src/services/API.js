@@ -52,7 +52,7 @@ const API = {
                     dispatch(getUserData(JSON.parse(response)));
                 })
                 .catch(() => {
-                    dispatch(errorProject('LogInData', 'Error!'));
+                    dispatch(errorProject('LOGIN_DATA', 'Error!'));
                     localStorage.clear();
                 });
         };
@@ -126,7 +126,7 @@ const API = {
                 .catch(() => dispatch(errorProject(receiveAction, errorMessage)));
         };
     },
-    registratePost(receiveAction, data, errorMessage) {
+    registrationPost(receiveAction, data, errorMessage) {
         const url = 'https://exadelcats.herokuapp.com/registration';
         return (dispatch) => {
             fetch(url, {
