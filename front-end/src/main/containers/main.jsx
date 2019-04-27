@@ -1,53 +1,49 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {Switch, Route, Redirect, withRouter} from 'react-router-dom';
+import {Redirect, Route, Switch, withRouter} from 'react-router-dom';
+import {connect} from "react-redux";
+import * as PropTypes from "prop-types";
 
-import HelloPage from '../../scenes/hello-page/hello-page';
-import Registration from '../../scenes/registration/containers/registration';
-import LogIn from '../../scenes/login/containers/login';
+import Header from "../../core/components/header/header";
+import Footer from "../../core/components/footer/footer";
 
+import {COMMON_ROUTES} from './commonRoutes';
+import * as logInReducers from '../../scenes/login/services/reducers/reducers';
 
 class Main extends React.Component {
-    renderCommonRoutes() {
-        return [
-            {
-                key: 'hello',
-                url: '/hello',
-                component: HelloPage,
-            }
-        ];
-    }
 
-    renderSwitch() {
-        return (
-            <Switch>
-                <Route exact path="/hello" component={HelloPage}/>
-                <Route exact path="/registration" component={Registration}/>
-                <Route exact path="/login" component={LogIn}/>
-                <Redirect to="/hello"/>
-            </Switch>
-        );
-    }
+    static propTypes = {
+        user: PropTypes.object.isRequired,
+    };
 
     render() {
-        // const role = 'dispatcher';
+        const {user} = this.props;
         return (
             <div className="main">
-                    {this.renderSwitch()}
+                <Header/>
+                <Switch>
+                    {COMMON_ROUTES.reduce((routers, el) => {
+                        if (el.users.includes(user.role.toUpperCase())) {
+                            routers.push(<Route
+                                key={el.key}
+                                exact
+                                path={el.url}
+                                component={el.component}
+                            />);
+                        }
+                        return routers;
+                    }, [])}
+                    <Redirect to={(user.role === 'GUEST')? '/hello': '/all_schedules'}/>}
+                </Switch>
+                <Footer/>
             </div>
         );
     }
 }
 
-function mapStateToProps() {
+function mapStateToProps(state) {
     return {
-        isReady: true,
+        user: logInReducers.getUser(state),
     };
 }
-
-Main.defaultProps = {
-    email: '',
-};
-
 
 export default withRouter(connect(mapStateToProps)(Main));
