@@ -6,8 +6,6 @@ const connection = mysql.createPool({
   database: 'schedule',
   host: 'localhost',
   user: 'root',
-  password: 'connection',
+  password: 'db',
 });
-connection.query(`USE ${connection.database}`);
-
 module.exports = connection;

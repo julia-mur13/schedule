@@ -34,14 +34,8 @@ const authenticModel = {
           user.password = hash;
           db.query(`SELECT * FROM \`users\` WHERE \`email\` = '${user.email}';`, (error, rows) => {
             if (error) {
-              db.on('release', (connection) => {
-                console.log('1', 'Connection %d released', connection.threadId);
-              });
               reject(error);
             } else if (rows.length > 0) {
-              db.on('release', (connection) => {
-                console.log('2', 'Connection %d released', connection.threadId);
-              });
               reject(error, { success: false, message: 'user already exist!' });
             }
             // db.query(`INSERT INTO \`users\`(\`username\`, \`email\`,\`password\`)VALUES('${newUser.username}', '${newUser.email}','${newUser.password}');`, (error, rows) => {

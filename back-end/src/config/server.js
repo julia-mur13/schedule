@@ -5,8 +5,8 @@ const cookieParser = require('cookie-parser');
 
 const session = require('express-session');
 const mongoose = require('mongoose');
-const SessionStore = require('connect-mongo')(session);
-// const SessionStore = require('express-mysql-session')(session);
+// const SessionStore = require('connect-mongo')(session);
+const SessionStore = require('express-mysql-session')(session);
 
 const app = express();
 
@@ -15,6 +15,8 @@ const groupRoute = require('../app/routes/group-routes');
 const authentic = require('../app/routes/authentic');
 
 // connection
+const db = require('./connection-mysql');
+
 // const dbfunc = require('./db-function');
 
 // app.use((req, res) => {
@@ -38,7 +40,6 @@ app.use(cookieParser());
 
 app.use(session({
   secret: 'secret-session',
-  // key: 'passport',
   resave: true,
   saveUninitialized: true,
   cookie: {
@@ -47,7 +48,7 @@ app.use(session({
     path: '/',
     expires: null,
   },
-  // store: new SessionStore({ mongooseConnection: mongoose.connection }),
+  store: new SessionStore(db),
 }));
 
 authentic(app);

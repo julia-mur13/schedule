@@ -4,7 +4,7 @@ USE schedule;
 
 SHOW TABLES;
 
-create table `users`(
+create table `user`(
 idUser int (10) AUTO_INCREMENT,
 username varchar(20)NOT NULL,
 email varchar(50)NOT NULL,
