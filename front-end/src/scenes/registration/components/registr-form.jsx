@@ -32,7 +32,7 @@ class RegistrationForm extends React.Component {
         });
     };
 
-    setRoleField= (event) => {
+    setSelectField = (event) => {
         this.setState({
             role: event,
         });
@@ -42,7 +42,6 @@ class RegistrationForm extends React.Component {
         e.preventDefault();
         const {form, onClick} = this.props;
         form.validateFieldsAndScroll((err) => {
-            console.log(onClick);
             if (!err) {
                 onClick({
                     firstName: this.state.firstName,
@@ -153,7 +152,7 @@ class RegistrationForm extends React.Component {
                         <Select className="custom-select"
                                 name="role"
                                 defaultValue="Студент"
-                                onChange={this.setRoleField}
+                                onChange={this.setSelectField}
                         >
                             <Option value="Student">Студент</Option>
                             <Option value="Teacher">Преподаватель</Option>

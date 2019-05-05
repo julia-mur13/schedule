@@ -1,22 +1,35 @@
 import React from 'react';
-import { Menu } from 'antd';
+import * as PropTypes from "prop-types";
+import {Menu} from 'antd';
+import { history } from '../../../services/configure-store';
 
 import './horizontal-menu.scss';
+import {MENU_ITEMS} from './menu-items';
+import {COMMON_ROUTES} from "../../../main/containers/common-routes";
 
 const SubMenu = Menu.SubMenu;
-const MenuItemGroup = Menu.ItemGroup;
 
 class HorizontalMenu extends React.PureComponent {
 
+    static propTypes = {
+        user: PropTypes.object.isRequired,
+    };
+
+    getActiveItem() {
+        const pathname = window.location.pathname;
+        return pathname.substr(pathname.lastIndexOf("/") + 1);
+    }
+
     state = {
-        current: 'mail',
+        current: this.getActiveItem(),
     };
 
     handleClick = (e) => {
-        console.log('click ', e);
         this.setState({
             current: e.key,
         });
+        const routeObject = COMMON_ROUTES.find(route => route.key === e.key);
+        history.push(routeObject.url);
     };
 
     render() {
@@ -25,28 +38,26 @@ class HorizontalMenu extends React.PureComponent {
                 onClick={this.handleClick}
                 selectedKeys={[this.state.current]}
                 mode="horizontal"
+                theme="dark"
+                className="horizontal-menu"
             >
-                <SubMenu key="schedules" title={<span className="submenu-title-wrapper">Расписания</span>}>
-                        <Menu.Item key="setting:1">Option 1</Menu.Item>
-                        <Menu.Item key="setting:2">Option 2</Menu.Item>
-                    <MenuItemGroup title="Item 2">
-                        <Menu.Item key="setting:3">Option 3</Menu.Item>
-                        <Menu.Item key="setting:4">Option 4</Menu.Item>
-                    </MenuItemGroup>
-                </SubMenu>
-                <Menu.Item key="app" disabled>
-                    Navigation Two
-                </Menu.Item>
-                <SubMenu title={<span className="submenu-title-wrapper">Navigation Three - Submenu</span>}>
-                    <MenuItemGroup title="Item 1">
-                        <Menu.Item key="setting:1">Option 1</Menu.Item>
-                        <Menu.Item key="setting:2">Option 2</Menu.Item>
-                    </MenuItemGroup>
-                    <MenuItemGroup title="Item 2">
-                        <Menu.Item key="setting:3">Option 3</Menu.Item>
-                        <Menu.Item key="setting:4">Option 4</Menu.Item>
-                    </MenuItemGroup>
-                </SubMenu>
+                {MENU_ITEMS.reduce((menu, submenu) => {
+                    if (submenu.userRoles.includes(this.props.user.role)) {
+                        if (submenu.items.length) {
+                            menu.push(
+                                <SubMenu key={submenu.key}
+                                         title={<span className="submenu-title-wrapper">{submenu.title}</span>}
+                                >
+                                    {submenu.items.map((item) => {
+                                        return (<Menu.Item key={item.key}>{item.title}</Menu.Item>)
+                                    })}
+                                </SubMenu>);
+                        } else {
+                            menu.push(<Menu.Item key={submenu.key}>{submenu.title}</Menu.Item>);
+                        }
+                    }
+                    return menu;
+                }, [])}
             </Menu>
         );
     }

@@ -1,0 +1,94 @@
+.classroom-card {
+  width: 30%;
+  min-height: 118px;
+  margin: 12px 10px;
+  transition: visibility, box-shadow .2s ease-in-out;
+
+  &:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  }
+
+  &.big-card {
+    min-height: 150px;
+  }
+
+  .classroom-card-body {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .card-edit-btn {
+    visibility: hidden;
+  }
+
+  &:hover {
+    .card-edit-btn {
+      visibility: visible;
+    }
+  }
+
+  /* background-color for difference type of cards */
+
+  &.lecture {
+    background-color: #def0d8;
+    border: 1px solid #B9CBB3;
+    .card-edit-btn {
+      background-color: #def0d8;
+      border-color: #def0d8;
+    }
+  }
+
+  &.practical {
+    background-color: #d9edf6;
+    border: 1px solid #AFC2CB;
+    .card-edit-btn {
+      background-color: #d9edf6;
+      border-color: #d9edf6;
+    }
+  }
+
+  &.laboratory {
+    background-color: #f2dedf;
+    border: 1px solid #CBB7B8;
+    .card-edit-btn {
+      background-color: #f2dedf;
+      border-color: #f2dedf;
+    }
+  }
+
+  &.gym {
+    background-color: #f7f0c6;
+    border: 1px solid #CBC49E;
+    .card-edit-btn {
+      background-color: #f7f0c6;
+      border-color: #f7f0c6;
+    }
+  }
+
+  &.add-classroom-card {
+    background-color: #dee6f9;
+    border: 1px dashed #B0B8CB;
+    text-align: center;
+
+    .classroom-add-btn {
+      width: 69px;
+      height: 69px;
+      background-color: #dee6f9;
+      border-color: #B0B8CB;
+    }
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .classroom-card {
+    margin: 12px 10px;
+    width: 43%;
+  }
+}
+
+@media screen and (max-width: 490px) {
+  .classroom-card {
+    margin: 12px 10px;
+    width: 100%;
+  }
+}

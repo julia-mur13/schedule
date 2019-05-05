@@ -8,13 +8,15 @@ import {Button} from 'antd';
 class GeneralButton extends React.PureComponent {
     static propTypes = {
         text: PropTypes.string.isRequired,
-        className: PropTypes.string.isRequired,
+        onClick: PropTypes.func.isRequired
     };
 
     render() {
         const { text, className } = this.props;
         return (
-            <Button type="primary" htmlType="submit" className={`general-button ${className}`}>{text}</Button>
+            <Button type="primary" htmlType="submit" className={`general-button ${className}`}
+            onClick={this.props.onClick}
+            >{text}</Button>
         );
     }
 }

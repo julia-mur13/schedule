@@ -1,8 +1,7 @@
 /* eslint-disable import/no-cycle */
-import { errorProject, isLoading, getData } from '../main/services/actions/actions';
-import { getUserData } from '../scenes/login/services/actions/actions';
-
-const urlServer = 'https://exadelcats.herokuapp.com/';
+import { errorProject, isLoading, getData } from '../main/service/actions/actions';
+import { getUserData } from '../scenes/login/service/actions/actions';
+import *as types from './types';
 
 function responseParse(response) {
     try {
@@ -36,7 +35,7 @@ const API = {
         return fetch(new Request(url, reqInit));
     },
     login(path, data) {
-        const url = `${urlServer}${path}`;
+        const url = `${types.urlServer}${path}`;
         return (dispatch) => {
             fetch(url, {
                 method: 'POST',
@@ -58,7 +57,7 @@ const API = {
         };
     },
     post(path, data, receiveAction, errorMessage) {
-        const url = `${urlServer}${path}`;
+        const url = `${types.urlServer}${path}`;
         return (dispatch, getState) => {
             dispatch(isLoading(true));
             const token = API.getTokenFromStore(getState());
@@ -72,7 +71,7 @@ const API = {
         };
     },
     postUploadFiles(path, data, receiveAction, errorMessage) {
-        const url = `${urlServer}${path}`;
+        const url = `${types.urlServer}${path}`;
         return (dispatch, getState) => {
             dispatch(isLoading(true));
             const token = API.getTokenFromStore(getState());
@@ -86,7 +85,7 @@ const API = {
         };
     },
     deleteRequest(path, data, receiveAction, errorMessage) {
-        const url = `${urlServer}${path}`;
+        const url = `${types.urlServer}${path}`;
         return (dispatch, getState) => {
             dispatch(isLoading(true));
             const token = API.getTokenFromStore(getState());
@@ -100,7 +99,7 @@ const API = {
         };
     },
     get(path, receiveAction, errorMessage) {
-        const url = `${urlServer}${path}`;
+        const url = `${types.urlServer}${path}`;
         return (dispatch, getState) => {
             dispatch(isLoading(true));
             const token = API.getTokenFromStore(getState());
@@ -113,7 +112,7 @@ const API = {
         };
     },
     put(path, data, receiveAction, errorMessage) {
-        const url = `${urlServer}${path}`;
+        const url = `${types.urlServer}${path}`;
         return (dispatch, getState) => {
             dispatch(isLoading(true));
             const token = API.getTokenFromStore(getState());

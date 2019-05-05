@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
-import app from '../main/services/reducers/reducers';
-import logInInformation from '../scenes/login/services/reducers/reducers';
-import userRegistration from '../scenes/registration/services/reducers/reducers';
+import app from '../main/service/reducers/reducers';
+import logInInformation from '../scenes/login/service/reducers/reducers';
+import userRegistration from '../scenes/registration/service/reducers/reducers';
 
 const reducers = combineReducers({
     app,

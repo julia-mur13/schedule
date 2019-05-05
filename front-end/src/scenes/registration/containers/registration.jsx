@@ -4,7 +4,7 @@ import {withRouter} from 'react-router-dom';
 import RegistrationForm from '../components/registr-form';
 
 import "./registration.scss";
-import {sendRegistrationData} from "../services/actions/actions";
+import {sendRegistrationData} from "../service/actions/actions";
 import * as PropTypes from "prop-types";
 
 class Registration extends React.Component {

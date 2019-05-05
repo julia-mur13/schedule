@@ -1,0 +1,39 @@
+.tl-table {
+  th.tl-table-name, th.tl-table-subjects, th.tl-table-options {
+    background-color: #f5f5f5;
+  }
+
+  .tl-table-name {
+    width: 30%;
+    font-weight: bold;
+  }
+
+  .tl-table-subjects {
+    width: 60%;
+    font-weight: bold;
+  }
+
+  .tl-table-options {
+    width: 10%;
+  }
+
+  .tl-optional-btn {
+    background-color: #f5f5f5;
+    color: #000;
+    border-color: #f5f5f5;
+    text-shadow: none;
+  }
+
+  .ant-table-body {
+    color: #000;
+  }
+}
+
+.tc-popover-item {
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color .2s ease-in-out;
+  &:hover {
+    background-color: #F4F4F4;
+  }
+}

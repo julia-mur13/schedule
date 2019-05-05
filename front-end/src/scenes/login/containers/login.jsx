@@ -3,8 +3,8 @@ import React from 'react';
 import './login.scss';
 
 import LogInForm from './../components/login-form';
-import * as logInReducers from "../services/reducers/reducers";
-import {getErrorFalse, logIn, logInData} from "../services/actions/actions";
+import * as logInReducers from "../service/reducers/reducers";
+import {getErrorFalse, logIn, logInData} from "../service/actions/actions";
 import connect from "react-redux/es/connect/connect";
 import * as PropTypes from "prop-types";
 
@@ -20,15 +20,11 @@ class LogIn extends React.Component {
         const {error, onLogIn, sendLogInData, errorFalse} = this.props;
 
         return (
-            <div className="main-wrapper">
-                <div className="main-content">
-                    <LogInForm error={error}
-                               onLogIn={onLogIn}
-                               sendLogInData={sendLogInData}
-                               errorFalse={errorFalse}
-                    />
-                </div>
-            </div>
+            <LogInForm error={error}
+                       onLogIn={onLogIn}
+                       sendLogInData={sendLogInData}
+                       errorFalse={errorFalse}
+            />
         );
     }
 }
@@ -39,7 +35,7 @@ function mapStateToProps(state) {
     };
 }
 
-function mapDispatch(dispatch){
+function mapDispatch(dispatch) {
     return {
         onLogIn: (username, password) => {
             dispatch(logIn(username, password));

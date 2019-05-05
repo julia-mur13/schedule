@@ -1,0 +1,35 @@
+.classrooms-grid {
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row wrap;
+  margin: 30px 7%;
+  .classroom-add-card {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    .classroom-number-input {
+      width: 100%;
+      height: 30px;
+      margin-bottom: 10px;
+      font-size: 1.17em;
+    }
+
+    .classroom-type-select {
+      width: 100%;
+      .ant-select-selection.ant-select-selection--single {
+        width: 100%;
+        height: 30px;
+        font-size: 1.17em;
+      }
+    }
+
+    .classroom-ok-btn {
+      margin-top: 10px;
+    }
+  }
+
+  .classroom-card.big-card .classroom-add-btn {
+    width: 112px;
+    height: 112px;
+  }
+}

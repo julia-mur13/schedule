@@ -1,0 +1,15 @@
+.schedule-list-wrapper {
+  width: 100%;
+  margin: 50px;
+  padding: 30px 30px 40px;
+  box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.14);
+  .schedule-list-title {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+  }
+
+  .schedule-list-title-text {
+    margin: 0;
+  }
+}

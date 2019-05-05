@@ -7,14 +7,24 @@
   display: flex;
 }
 
-.main-content {
-  display: flex;
-  align-items: center;
-  flex: 1 0 auto;
-}
-
 .main {
   height: 100%;
+  .custom-layout {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background: #fff;
+  }
+
+  .main-content {
+    display: flex;
+    align-items: center;
+    flex: 1 0 auto;
+  }
+}
+
+.typo {
+  font-weight: bold;
 }
 
 #root {
