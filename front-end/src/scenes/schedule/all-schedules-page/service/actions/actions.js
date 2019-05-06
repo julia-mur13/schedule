@@ -1,6 +1,6 @@
 import { message } from 'antd';
-import API from '../../../../../services/API';
-import { history } from '../../../../../services/configure-store';
+import API from '../../../../../service/API';
+import { history } from '../../../../../service/configure-store';
 
 export function sendRegistrationData(user) {
     return API.registrationPost(['REGISTRATION_DATA', () => {

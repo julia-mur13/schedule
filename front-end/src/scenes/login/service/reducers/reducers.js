@@ -1,4 +1,4 @@
-import requestLoginInformation from '../../../../services/login-service';
+import requestLoginInformation from '../../../../service/login-service';
 
 import {
     GET_USER_DATA,

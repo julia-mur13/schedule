@@ -1,7 +1,7 @@
 import React from 'react';
 import * as PropTypes from "prop-types";
 import {Menu} from 'antd';
-import { history } from '../../../services/configure-store';
+import { history } from '../../../service/configure-store';
 
 import './horizontal-menu.scss';
 import {MENU_ITEMS} from './menu-items';

@@ -1,6 +1,6 @@
 /* eslint-disable import/no-cycle */
 import { LOG_IN, GET_USER_DATA, GET_ERROR_FALSE } from './types';
-import API from '../../../../services/API';
+import API from '../../../../service/API';
 
 export function logIn(name, key) {
     return {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './app.css';
 import { Provider } from 'react-redux';
-import { history, store } from './services/configure-store';
+import { history, store } from './service/configure-store';
 import Main from './main/containers/main';
 import { Router }  from "react-router-dom";
 
