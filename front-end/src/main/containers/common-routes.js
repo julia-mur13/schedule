@@ -1,6 +1,6 @@
 import HelloPage from "../../scenes/hello-page/container/hello-page";
 import Registration from "../../scenes/registration/containers/registration";
-import LogIn from "../../scenes/login/containers/login";
+import LogIn from "../../scenes/login/container/login";
 import AllSchedulesPage from "../../scenes/schedule/all-schedules-page/containers/all-schedules";
 import InputClassrooms from "../../scenes/input-data/input-classrooms/container/input-classrooms";
 import CreateSchedule from "../../scenes/schedule/create-schedule/containers/create-schedule";

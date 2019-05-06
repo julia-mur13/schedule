@@ -49,7 +49,7 @@ class LogInForm extends React.Component {
                         {getFieldDecorator('username', {
                             rules: [{
                                 required: true,
-                                message: 'Введите, пожалуйста, email!',
+                                message: 'Введите, пожалуйста, почту!',
                             }],
                         })(
                             <Input
@@ -70,7 +70,7 @@ class LogInForm extends React.Component {
                         )}
                     </Form.Item>
                     <Form.Item>
-                        <Button text="Авторизоваться" className="login-submit-btn"/>
+                        <Button text="Войти" className="login-submit-btn"/>
                     </Form.Item>
 
                 </Form>

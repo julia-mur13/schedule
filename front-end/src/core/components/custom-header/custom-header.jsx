@@ -3,6 +3,7 @@ import * as PropTypes from "prop-types";
 import {Layout} from 'antd';
 import HorizontalMenu from "../horizontal-menu/horizontal-menu";
 import './custom-header.scss';
+import logo from './logo5.png';
 
 const {Header} = Layout;
 
@@ -23,8 +24,11 @@ class CustomHeader extends React.PureComponent {
     render() {
         return (
             <Header className="main-header">
-                <div className="header-logo">LOGO</div>
-                {this.renderLinks()}
+                    <div className="header-logo">
+                        <img className="header-logo-img" src={logo} />
+                        <p className="header-logo-text">SCHEDULE BOARD</p>
+                    </div>
+                    {this.renderLinks()}
             </Header>
         );
     }

@@ -32,9 +32,14 @@
   }
 
   .header-logo {
-    font-size: 20px;
-    letter-spacing: 4.5px;
-    color: #fff;
+    display: flex;
+    align-items: center;
+  }
+  .header-logo-img {
+    height: 60px;
+  }
+  .header-logo-text {
+    display: none;
   }
 }
 
@@ -42,8 +47,16 @@
   .main-header {
     flex-direction: column;
     justify-content: center;
-    .header-logo {
-      margin-bottom: 7px;
+    .header-logo-img {
+      display: none;
+    }
+    .header-logo-text {
+      display: inline-block;
+      margin: 0;
+      line-height: 12px;
+      font-size: 10px;
+      letter-spacing: 4.5px;
+      color: #fff;
     }
   }
 }

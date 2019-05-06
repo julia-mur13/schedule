@@ -1,6 +1,6 @@
 function requestLoginInformation() {
     const user = {
-        role: 'TEACHER',
+        role: 'GUEST',
         email: 'admin',
         password: 'admin'
     };
