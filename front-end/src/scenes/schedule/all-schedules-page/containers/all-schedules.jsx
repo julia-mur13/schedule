@@ -5,9 +5,9 @@ import {withRouter} from 'react-router-dom';
 import "./all-schedules.scss";
 import {sendRegistrationData} from "../service/actions/actions";
 import * as PropTypes from "prop-types";
-import SchedulesList from "../components/schedules-list";
+import AllSchedulesTable from "../components/all-schedules-table";
 import GeneralButton from "../../../../core/components/button/button";
-import SchedulePopup from '../components/schedule-popup';
+import AddSchedulePopup from '../components/add-schedule-popup';
 
 class AllSchedules extends React.Component {
 
@@ -44,10 +44,10 @@ class AllSchedules extends React.Component {
                     <h3 className="schedule-list-title-text">Все расписания</h3>
                     <GeneralButton text="Добавить расписание" onClick={(e) => this.showModal(e)}/>
                 </div>
-                <SchedulesList/>
-                <SchedulePopup visible={this.state.visible}
-                               handleOk={this.handleOk}
-                               handleCancel={this.handleCancel}/>
+                <AllSchedulesTable/>
+                <AddSchedulePopup visible={this.state.visible}
+                                  handleOk={this.handleOk}
+                                  handleCancel={this.handleCancel}/>
             </div>
         );
     }

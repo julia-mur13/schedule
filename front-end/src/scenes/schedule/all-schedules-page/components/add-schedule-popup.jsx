@@ -2,13 +2,13 @@ import React from 'react';
 import * as PropTypes from "prop-types";
 import {Modal, Input, Select, Form} from 'antd';
 
-import './schedule-popup.scss';
+import './add-schedule-popup.scss';
 import GeneralButton from "../../../../core/components/button/button";
 
 const Option = Select.Option;
 
 
-class ScheduleForm extends React.Component {
+class AddScheduleForm extends React.Component {
 
     static propTypes = {
         visible: PropTypes.bool.isRequired,
@@ -67,11 +67,11 @@ class ScheduleForm extends React.Component {
                     title="Добавить Расписание"
                     centered
                     visible={this.props.visible}
-                    wrapClassName="schedule-popup"
+                    wrapClassName="add-schedule-popup"
                     footer={null}
                     onCancel={this.props.handleCancel}
                 >
-                    <Form className="registration-form">
+                    <Form className="add-schedule-form">
 
                         <h3 className="schedule-popup-text">Название</h3>
                         <Form.Item>
@@ -88,7 +88,7 @@ class ScheduleForm extends React.Component {
                                 }],
                             })(
                                 <Input className="custom-input"
-                                       onFocus={this.setTextField}/>
+                                       onBlur={this.setTextField}/>
                             )}
                         </Form.Item>
 
@@ -116,6 +116,6 @@ class ScheduleForm extends React.Component {
     }
 }
 
-const SchedulePopup = Form.create()(ScheduleForm);
+const AddSchedulePopup = Form.create()(AddScheduleForm);
 
-export default SchedulePopup;
+export default AddSchedulePopup;

@@ -30,8 +30,8 @@ export const COMMON_ROUTES = [
         component: AllSchedulesPage
     }, {
         userRoles: ['TEACHER'],
-        key: 'create_schedules',
-        url: '/schedule/create_schedules',
+        key: 'create_schedule',
+        url: '/schedule/create_schedule',
         component: CreateSchedule
     }, {
         key: 'classrooms',

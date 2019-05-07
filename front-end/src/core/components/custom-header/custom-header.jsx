@@ -3,7 +3,7 @@ import * as PropTypes from "prop-types";
 import {Layout} from 'antd';
 import HorizontalMenu from "../horizontal-menu/horizontal-menu";
 import './custom-header.scss';
-import logo from './logo5.png';
+import logo from './logo.png';
 
 const {Header} = Layout;
 

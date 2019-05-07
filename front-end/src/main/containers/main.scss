@@ -40,12 +40,6 @@ body {
   letter-spacing: 2px;
 }
 
-@media screen and (max-width: 750px) {
-  body {
-    font-size: 15px;
-  }
-}
-
 html {
   height: 100%;
 }
@@ -59,4 +53,10 @@ html {
 a, .link {
   text-decoration: none;
   outline: 0;
+}
+
+@media screen and (max-width: 750px) {
+  body {
+    font-size: 15px;
+  }
 }

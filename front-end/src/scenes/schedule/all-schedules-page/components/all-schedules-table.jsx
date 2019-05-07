@@ -1,8 +1,8 @@
 import React from 'react';
 import {Table, Popover, Button, List} from 'antd';
-import './schedules-list.scss';
+import './all-schedules-table.scss';
 
-class SchedulesList extends React.Component {
+class AllSchedulesTable extends React.Component {
 
     popoverData = [
         'Изменить название',
@@ -72,4 +72,4 @@ class SchedulesList extends React.Component {
     }
 }
 
-export default SchedulesList;
+export default AllSchedulesTable;
