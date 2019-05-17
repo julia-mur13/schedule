@@ -1,8 +1,8 @@
 function requestLoginInformation() {
     const user = {
         role: 'TEACHER',
-        email: 'admin',
-        password: 'admin'
+        email: '',
+        password: ''
     };
     localStorage.setItem('user', JSON.stringify(user));
     const data = JSON.parse(localStorage.getItem('user'));

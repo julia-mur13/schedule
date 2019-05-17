@@ -13,7 +13,7 @@ const initialState = {
     error: false,
 };
 
-function logInInformation(state = initialState, action) {
+function logIn(state = initialState, action) {
     switch (action.type) {
 
         case LOG_IN: {
@@ -66,12 +66,4 @@ function logInInformation(state = initialState, action) {
     }
 }
 
-export function getUser(state) {
-    return state.logInInformation.user;
-}
-
-export function getUserDataError(state) {
-    return state.logInInformation.error;
-}
-
-export default logInInformation;
+export default logIn;

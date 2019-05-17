@@ -1,0 +1,21 @@
+.custom-search-select {
+  .ant-select-selection.ant-select-selection--single {
+    height: 45px;
+    background-color: rgba(27, 29, 30, 0.03);
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    border-radius: 0;
+    font-family: 'Poiret One', cursive;
+    font-weight: normal;
+    font-size: 17px;
+    letter-spacing: 2px;
+    outline: none;
+
+    &:focus, &:hover {
+      box-shadow: none;
+      border-color: rgba(27, 29, 30, 0.82);
+    }
+
+  }
+}

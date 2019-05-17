@@ -29,6 +29,12 @@ export const MENU_ITEMS = [{
     }, {
         key: 'teachers',
         title: 'Преподаватели'
+    }, {
+        key: 'subjects',
+        title: 'Дисциплины'
+    }, {
+        key: 'groups',
+        title: 'Группы'
     }]
 }, {
     userRoles: ['STUDENT'],

@@ -8,6 +8,15 @@
   background: #1b1d1e;
   white-space: nowrap;
 
+  .add-schedule-name {
+    margin-left: 30px;
+    display: flex;
+    text-align: center;
+    background-color: #1b1d1e;
+    color: #fff;
+    font-size: 15px;
+  }
+
   .main-header-nav {
     display: flex;
     flex: 0 1 auto;

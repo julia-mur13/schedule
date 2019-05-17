@@ -3,10 +3,10 @@ import React from 'react';
 import './login.scss';
 
 import LogInForm from './../components/login-form';
-import * as logInReducers from "../service/reducers/reducers";
-import {getErrorFalse, logIn, logInData} from "../service/actions/actions";
-import connect from "react-redux/es/connect/connect";
-import * as PropTypes from "prop-types";
+import * as logInReducers from '../service/reducers/selectors';
+import { getErrorFalse, logIn, logInData } from '../service/actions/actions';
+import connect from 'react-redux/es/connect/connect';
+import * as PropTypes from 'prop-types';
 
 class LogIn extends React.Component {
     static propTypes = {
@@ -35,7 +35,7 @@ function mapStateToProps(state) {
     };
 }
 
-function mapDispatch(dispatch) {
+function mapDispatchToProps(dispatch) {
     return {
         onLogIn: (username, password) => {
             dispatch(logIn(username, password));
@@ -53,4 +53,4 @@ function mapDispatch(dispatch) {
     };
 }
 
-export default connect(mapStateToProps, mapDispatch)(LogIn);
+export default connect(mapStateToProps, mapDispatchToProps)(LogIn);

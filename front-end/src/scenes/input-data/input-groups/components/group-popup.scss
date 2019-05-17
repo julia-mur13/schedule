@@ -1,0 +1,22 @@
+.teacher-popup {
+  .ant-modal-header {
+    background-color: #1b1d1e;
+  }
+
+  .ant-modal-title {
+    color: #fff;
+  }
+
+  .teacher-popup-text {
+    font-weight: bold;
+  }
+
+  .ant-modal-close-x svg {
+    fill: white !important;
+  }
+
+  .teacher-btns-wrapper {
+    display: flex;
+    justify-content: flex-end;
+  }
+}

@@ -11,6 +11,8 @@ function responseParse(response) {
     }
 }
 
+
+
 const API = {
     getTokenFromStore(state) {
         const token = state.logInInformation.user;

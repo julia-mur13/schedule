@@ -1,7 +1,7 @@
 import React from 'react';
-import * as PropTypes from "prop-types";
-import {Layout} from 'antd';
-import HorizontalMenu from "../horizontal-menu/horizontal-menu";
+import * as PropTypes from 'prop-types';
+import { Layout } from 'antd';
+import HorizontalMenu from '../horizontal-menu/horizontal-menu';
 import './custom-header.scss';
 import logo from './logo.png';
 
@@ -11,6 +11,7 @@ class CustomHeader extends React.PureComponent {
 
     static propTypes = {
         user: PropTypes.object.isRequired,
+        addedScheduleName: PropTypes.string.isRequired
     };
 
     renderLinks() {
@@ -22,13 +23,15 @@ class CustomHeader extends React.PureComponent {
     }
 
     render() {
+        const {addedScheduleName} = this.props;
         return (
             <Header className="main-header">
-                    <div className="header-logo">
-                        <img className="header-logo-img" src={logo} />
-                        <p className="header-logo-text">SCHEDULE BOARD</p>
-                    </div>
-                    {this.renderLinks()}
+                <div className="header-logo">
+                    <img className="header-logo-img" src={logo}/>
+                    <p className="header-logo-text">SCHEDULE BOARD</p>
+                </div>
+                {(addedScheduleName) ? <div className="add-schedule-name">{addedScheduleName}</div> : null}
+                {this.renderLinks()}
             </Header>
         );
     }

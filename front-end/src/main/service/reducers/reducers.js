@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 
 const initialState = {
-    userType: 'guest',
+    role: 'GUEST',
     isAuth: false,
     isReady: true,
     error: false,

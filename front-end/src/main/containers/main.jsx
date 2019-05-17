@@ -1,19 +1,21 @@
 import React from 'react';
-import {Redirect, Route, Switch, withRouter} from 'react-router-dom';
-import {connect} from "react-redux";
-import * as PropTypes from "prop-types";
-import {Layout} from 'antd';
+import { Redirect, Route, Switch, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import * as PropTypes from 'prop-types';
+import { Layout } from 'antd';
 import './main.scss';
-import CustomHeader from "../../core/components/custom-header/custom-header";
-import CustomFooter from "../../core/components/custom-footer/custom-footer";
+import CustomHeader from '../../core/components/custom-header/custom-header';
+import CustomFooter from '../../core/components/custom-footer/custom-footer';
 
-import {COMMON_ROUTES} from './common-routes';
-import * as logInReducers from '../../scenes/login/service/reducers/reducers';
+import { COMMON_ROUTES } from './common-routes';
+import * as logInReducers from '../../scenes/login/service/reducers/selectors';
+import * as addScheduleReducers from '../../scenes/schedule/add-schedule/service/reducers/selectors';
 
 class Main extends React.Component {
 
     static propTypes = {
         user: PropTypes.object.isRequired,
+        addedScheduleName: PropTypes.string.isRequired
     };
 
     getRoutes() {
@@ -32,11 +34,11 @@ class Main extends React.Component {
     }
 
     render() {
-        const {user} = this.props;
+        const {user, addedScheduleName} = this.props;
         return (
             <div className="main">
                 <Layout className="custom-layout">
-                    <CustomHeader user={user}/>
+                    <CustomHeader user={user} addedScheduleName={addedScheduleName}/>
                     <div className="main-content">
                         <Switch>
                             {this.getRoutes()}
@@ -53,6 +55,7 @@ class Main extends React.Component {
 function mapStateToProps(state) {
     return {
         user: logInReducers.getUser(state),
+        addedScheduleName: addScheduleReducers.getAddedScheduleName(state),
     };
 }
 

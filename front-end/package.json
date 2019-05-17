@@ -8,13 +8,16 @@
     "babel-plugin-styled-components": "^1.10.0",
     "customize-cra": "^0.2.12",
     "express": "^4.16.4",
+    "fs": "0.0.1-security",
     "history": "^4.7.2",
+    "node-xlsx": "^0.15.0",
     "react": "^16.8.3",
     "react-app-rewire-less": "^2.1.3",
     "react-app-rewire-sass-modules": "^1.1.7",
     "react-app-rewired": "^2.1.1",
     "react-dev-utils": "latest",
     "react-dom": "^16.8.3",
+    "react-helmet": "^5.2.1",
     "react-highlight-words": "^0.16.0",
     "react-redux": "^6.0.1",
     "react-router-dom": "^4.3.1",
@@ -24,7 +27,8 @@
     "redux-devtools-extension": "^2.13.8",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
-    "sass": "^1.17.3"
+    "sass": "^1.17.3",
+    "xlsx": "^0.14.3"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -1,10 +1,10 @@
 import React from 'react';
 
-import "./registr-form.scss";
+import './registr-form.scss';
 
-import {Form, Select, Input} from 'antd';
+import { Form, Select, Input } from 'antd';
 import Button from '../../../core/components/button/button';
-import * as PropTypes from "prop-types";
+import * as PropTypes from 'prop-types';
 
 const Option = Select.Option;
 

@@ -1,13 +1,17 @@
 import React from 'react';
-import {Table, Popover, Button, List} from 'antd';
+import { Table, Popover, Button, List, Icon } from 'antd';
 import './teachers-list.scss';
+import * as PropTypes from 'prop-types';
 
 class TeachersList extends React.Component {
+
+    static propTypes = {
+        teachers: PropTypes.array.isRequired,
+    };
 
     popoverData = [
         'Удалить'
     ];
-
 
     onClickOptions(e) {
 
@@ -23,15 +27,32 @@ class TeachersList extends React.Component {
         />
     );
 
+    getData() {
+        return this.props.teachers.map((el, index) => {
+            return {
+                key: index,
+                name: el.lastName + ' ' + el.firstName[0].toUpperCase() + '. ' + el.middleName[0].toUpperCase() + '.',
+                subjects: el.subjects,
+                groups: el.groups.join(', ')
+            };
+        });
+    }
+
     columns = [{
-        title: 'ФИО',
+        title: <div className="title-name-wrapper">
+            <div>ФИО</div>
+            <Icon className="title-icon-search" type="search"/></div>,
         dataIndex: 'name',
         className: 'tl-table-name',
         // render: text => {text},
     }, {
         title: 'Дисциплины',
         dataIndex: 'subjects',
-        className: 'tl-table-subjects',
+        className: 'tl-title-info',
+    }, {
+        title: 'Группы',
+        dataIndex: 'groups',
+        className: 'tl-title-info',
     }, {
         dataIndex: 'options',
         className: 'tl-table-options',
@@ -40,19 +61,6 @@ class TeachersList extends React.Component {
                 <Button className="tl-optional-btn" shape="circle" icon="ellipsis" type="primary"/>
             </Popover>)
     }];
-
-    getData() {
-        const data = [];
-        for (let i = 1; i <= 10; i++) {
-            data.push({
-                key: i,
-                name: `Джон Праймс ${i}`,
-                subjects: `Матан ${i}, ИСО ${i}, ТМ ${i}`,
-                date: i,
-            })
-        }
-        return data;
-    }
 
     render() {
         return (

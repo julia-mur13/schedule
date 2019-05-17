@@ -8,7 +8,7 @@ const initialState = {
     error: false,
 };
 
-function userRegistration(state = initialState, action) {
+function registration(state = initialState, action) {
     switch (action.type) {
 
         case RECEIVE_REGISTRATION_DATA: {
@@ -32,12 +32,4 @@ function userRegistration(state = initialState, action) {
     }
 }
 
-export function getUser(state) {
-    return state.userRegistration.user;
-}
-
-export function getRegistrationDataError(state) {
-    return state.userRegistration.user;
-}
-
-export default userRegistration;
+export default registration;

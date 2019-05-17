@@ -5,7 +5,7 @@ import API from '../../../../service/API';
 export function logIn(name, key) {
     return {
         type: LOG_IN,
-        payload: { username: name, password: key },
+        payload: {username: name, password: key},
     };
 }
 

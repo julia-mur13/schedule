@@ -1,5 +1,5 @@
 .tl-table {
-  th.tl-table-name, th.tl-table-subjects, th.tl-table-options {
+  th.tl-table-name, th.tl-title-info, th.tl-table-options {
     background-color: #f5f5f5;
   }
 
@@ -8,8 +8,8 @@
     font-weight: bold;
   }
 
-  .tl-table-subjects {
-    width: 60%;
+  .tl-title-info {
+    width: 30%;
     font-weight: bold;
   }
 
@@ -26,6 +26,14 @@
 
   .ant-table-body {
     color: #000;
+  }
+
+  .title-name-wrapper {
+    display: flex;
+    justify-content: space-between;
+    .title-icon-search{
+      color: #bfbfbf;
+    }
   }
 }
 

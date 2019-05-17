@@ -1,0 +1,33 @@
+.group-list {
+  th.tl-table-name, th.tl-table-options {
+    background-color: #f5f5f5;
+  }
+
+  .groups-title-name {
+    width: 90%;
+  }
+
+  .groups-title-options {
+    width: 10%;
+  }
+
+  .groups-optional-btn {
+    background-color: #f5f5f5;
+    color: #000;
+    border-color: #f5f5f5;
+    text-shadow: none;
+  }
+
+  .ant-table-body {
+    color: #000;
+  }
+}
+
+.tc-popover-item {
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color .2s ease-in-out;
+  &:hover {
+    background-color: #F4F4F4;
+  }
+}

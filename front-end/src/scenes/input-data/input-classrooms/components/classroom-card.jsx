@@ -7,9 +7,10 @@ const Option = Select.Option;
 
 class ClassroomCard extends React.Component {
 
+
     static propTypes = {
         type: PropTypes.string.isRequired,
-        clickAddBtn: PropTypes.bool.isRequired,
+        isClickedAdd: PropTypes.bool.isRequired,
         editClassroom: PropTypes.func.isRequired,
         number: PropTypes.number.isRequired
     };
@@ -87,7 +88,7 @@ class ClassroomCard extends React.Component {
     }
 
     render() {
-        const addClass = (this.props.clickAddBtn || this.props.clickEditBtn) ? "big-card" : "";
+        const addClass = (this.props.isClickedAdd || this.props.clickEditBtn) ? "big-card" : "";
         return (
             <Card number={this.props.number} className={"classroom-card " + this.getTypeClassName() + " " + addClass}>
                 {this.renderEditClassroom()}

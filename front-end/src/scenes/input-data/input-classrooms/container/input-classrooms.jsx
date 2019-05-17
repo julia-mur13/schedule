@@ -1,21 +1,32 @@
 import React from 'react';
-import ClassroomCard from "../components/classroom-card";
+import { Button, Card, Input, message, Select } from 'antd';
 import './input-classrooms.scss';
-import {Button, Card, Input, message, Select} from "antd";
+import ClassroomCard from '../components/classroom-card';
+import connect from 'react-redux/es/connect/connect';
+import * as classroomsReducers from '../service/reducers/selectors';
+import { addClassroom } from '../service/actions/actions';
+import * as PropTypes from 'prop-types';
 
+const Search = Input.Search;
 const Option = Select.Option;
 
 class InputClassrooms extends React.Component {
 
+    static propTypes = {
+        addClassroom: PropTypes.func.isRequired,
+        classrooms: PropTypes.array.isRequired,
+    };
+
     state = {
-        clickAddBtn: false,
-        clickEditBtn: null
+        isClickedAdd: false,
+        clickEditBtn: null,
+        number: null,
+        type: 'Практическая'
     };
 
     editClassroom(event) {
-        console.log(111);
-        if (this.clickAddBtn) {
-            message.error('Регистрация не произошла');
+        if (this.isClickedAdd) {
+            message.error('Добавьте аудиторию');
         } else {
             event.target.setAttribute('edit', '');
             this.setState({clickEditBtn: event.target});
@@ -23,32 +34,30 @@ class InputClassrooms extends React.Component {
     }
 
     getClassroomCards() {
-        const arr = [
-            {number: 235, type: "Практическая"},
-            {number: 607, type: "Лекционная"},
-            {number: 518, type: "Практическая"},
-            {number: 506, type: "Лабораторная"},
-            {number: 521, type: "Практическая"},
-            {number: null, type: "Спортивный зал"},
-            {number: 235, type: "Практическая"},
-            {number: 235, type: "Практическая"},
-            {number: 235, type: "Практическая"}];
-        return arr.map((el, index) => <ClassroomCard roomNumber={el.number} type={el.type} number={index} key={index}
-                                                     clickAddBtn={this.state.clickAddBtn}
-                                                     clickEditBtn={this.state.clickEditBtn}
-                                                     editClassroom={(e) => this.editClassroom(e)}
-                                                     finishEditClassroom={(e) => this.finishEditClassroom(e)}
-        />)
+        return this.props.classrooms.map((el, index) => <ClassroomCard roomNumber={el.number} type={el.type}
+                                                                       number={index} key={index}
+                                                                       isClickedAdd={this.state.isClickedAdd}
+                                                                       clickEditBtn={this.state.clickEditBtn}
+                                                                       editClassroom={(e) => this.editClassroom(e)}
+                                                                       finishEditClassroom={(e) => this.finishEditClassroom(e)}
+        />);
     }
 
-    addClassroom() {
+    addClassroomForm() {
         this.setState({
-            clickAddBtn: true
-        })
+            isClickedAdd: true
+        });
     }
+
+    addClassroom = () => {
+        this.props.addClassroom({
+            number: this.state.number,
+            type: this.state.type
+        });
+    };
 
     setTextField = (event) => {
-        const field = event.target.id;
+        const field = event.target.getAttribute('field');
         const value = event.target.value;
         this.setState({
             [field]: value || '',
@@ -57,15 +66,16 @@ class InputClassrooms extends React.Component {
 
     setSelectField = (event) => {
         this.setState({
-            role: event,
+            type: event,
         });
     };
 
     renderAddCard() {
-        if (this.state.clickAddBtn) {
+        if (this.state.isClickedAdd) {
             return (
                 <div className="classroom-add-card">
                     <Input className="custom-input classroom-number-input"
+                           field="number"
                            placeholder="Номер аудитории"
                            onBlur={this.setTextField}
                     />
@@ -79,25 +89,47 @@ class InputClassrooms extends React.Component {
                         <Option value="Laboratory">Лабораторная</Option>
                         <Option value="Gym">Спортивный зал</Option>
                     </Select>
-                    <Button className="classroom-ok-btn general-button">OK</Button>
+                    <Button onClick={(e) => this.addClassroom(e)}
+                            className="classroom-ok-btn general-button">OK</Button>
                 </div>
             );
         }
         return (<Button className="classroom-add-btn" type="dashed" shape="circle" icon="plus"
-                        onClick={this.addClassroom.bind(this)}/>);
+                        onClick={this.addClassroomForm.bind(this)}/>);
     }
 
     render() {
-        const addClass = (this.state.clickAddBtn || this.state.clickEditBtn) ? "big-card" : "";
+        const addClass = (this.state.isClickedAdd || this.state.clickEditBtn) ? 'big-card' : '';
         return (
-            <div className="classrooms-grid">
-                <Card className={"classroom-card add-classroom-card " + addClass}>
-                    {this.renderAddCard()}
-                </Card>
-                {this.getClassroomCards()}
+            <div>
+                {/*<Search*/}
+                    {/*placeholder="Введите номер или тип аудитории"*/}
+                    {/*onSearch={value => console.log(value)}*/}
+                    {/*style={{width: 350}}*/}
+                {/*/>*/}
+                <div className="classrooms-grid">
+                    <Card className={'classroom-card add-classroom-card ' + addClass}>
+                        {this.renderAddCard()}
+                    </Card>
+                    {this.getClassroomCards()}
+                </div>
             </div>
         );
     }
 }
 
-export default InputClassrooms;
+function mapStateToProps(state) {
+    return {
+        classrooms: classroomsReducers.getClassrooms(state),
+    };
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        addClassroom: (classroom) => {
+            dispatch(addClassroom(classroom));
+        },
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(InputClassrooms);

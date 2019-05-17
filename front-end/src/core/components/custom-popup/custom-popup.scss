@@ -1,0 +1,22 @@
+.custom-popup {
+  .ant-modal-header {
+    background-color: #1b1d1e;
+  }
+
+  .ant-modal-title {
+    color: #fff;
+  }
+
+  .custom-popup-text {
+    font-weight: bold;
+  }
+
+  .ant-modal-close-x svg {
+    fill: white !important;
+  }
+
+  .popup-btns-wrapper {
+    display: flex;
+    justify-content: flex-end;
+  }
+}

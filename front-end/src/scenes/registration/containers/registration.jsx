@@ -1,11 +1,11 @@
 import React from 'react';
-import connect from "react-redux/es/connect/connect";
-import {withRouter} from 'react-router-dom';
+import connect from 'react-redux/es/connect/connect';
+import { withRouter } from 'react-router-dom';
 import RegistrationForm from '../components/registr-form';
 
-import "./registration.scss";
-import {sendRegistrationData} from "../service/actions/actions";
-import * as PropTypes from "prop-types";
+import './registration.scss';
+import { sendRegistrationData } from '../service/actions/actions';
+import * as PropTypes from 'prop-types';
 
 class Registration extends React.Component {
 
