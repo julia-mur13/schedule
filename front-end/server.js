@@ -1,10 +1,17 @@
 const express = require('express');
+const fs = require('fs');
+const url = require('url');
 const app = express();
-const port = process.env.PORT || 5000;
 
 // create a GET route
-app.get('/express_backend', (req, res) => {
-    const newsData = JSON.parse(fs.readFileSync('./src/scenes/login/data.json'));
+app.get('/*', (req, res) => {
+    const pathes = req.url.split('/');
+    console.log(req.url.split('/'));
+    const newsData = JSON.parse(fs.readFileSync(`./src/scenes/input-data/input-${pathes[2]}/service/reducers/data.json`));
 
-    res.send(newsData, { express: 'YOUR EXPRESS BACKEND IS CONNECTED TO REACT' });
+    res.send({express: newsData});
+});
+
+app.listen(3000, function () {
+    console.log('Example app listening on port 3000!');
 });

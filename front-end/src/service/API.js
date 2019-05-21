@@ -21,9 +21,8 @@ const API = {
         }
         return null;
     },
-    sendRequest(token, url, reqInit) {
+    sendRequest(url, reqInit) {
         const headers = reqInit.headers ? reqInit.headers : new Headers();
-        headers.append('Authorization', `Bearer ${token}`);
         headers.append('Content-Type', 'application/json');
         reqInit.headers = headers;
         reqInit.mode = 'cors';
@@ -102,16 +101,13 @@ const API = {
     },
     get(path, receiveAction, errorMessage) {
         const url = `${types.urlServer}${path}`;
-        return (dispatch, getState) => {
-            dispatch(isLoading(true));
-            const token = API.getTokenFromStore(getState());
-            API.sendRequest(token, url, {
+
+            API.sendRequest(url, {
                 method: 'GET',
             })
                 .then(responseParse)
-                .then(items => dispatch(getData(receiveAction, items)))
-                .catch(() => dispatch(errorProject(receiveAction, errorMessage)));
-        };
+                // .then(items => dispatch(getData(receiveAction, items)))
+                // .catch(() => dispatch(errorProject(receiveAction, errorMessage)));
     },
     put(path, data, receiveAction, errorMessage) {
         const url = `${types.urlServer}${path}`;

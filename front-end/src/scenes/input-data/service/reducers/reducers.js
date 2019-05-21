@@ -11,7 +11,6 @@ const inputData = combineReducers({
     subjects,
     groups,
     time
-
 });
 
 export default inputData;

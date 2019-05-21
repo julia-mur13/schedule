@@ -7,7 +7,6 @@ import * as classroomsReducers from '../service/reducers/selectors';
 import { addClassroom } from '../service/actions/actions';
 import * as PropTypes from 'prop-types';
 
-const Search = Input.Search;
 const Option = Select.Option;
 
 class InputClassrooms extends React.Component {
@@ -54,6 +53,9 @@ class InputClassrooms extends React.Component {
             number: this.state.number,
             type: this.state.type
         });
+        this.setState({
+            isClickedAdd: false
+        });
     };
 
     setTextField = (event) => {
@@ -65,8 +67,27 @@ class InputClassrooms extends React.Component {
     };
 
     setSelectField = (event) => {
+        event = event.toLowerCase();
+        let type = '';
+        switch (event) {
+            case 'lecture':
+                type = 'Лекционная';
+                break;
+            case 'practical':
+                type = 'Практическая';
+                break;
+            case 'laboratory':
+                type = 'Лабораторная';
+                break;
+            case 'gym':
+                type = 'Спортивный зал';
+                break;
+            default:
+                break;
+        }
+        console.log('event', event);
         this.setState({
-            type: event,
+            type: type,
         });
     };
 

@@ -1,4 +1,5 @@
 import { ADD_CLASSROOM } from '../actions/types';
+import API from '../../../../../service/API';
 
 const initialState = [
     {number: 235, type: 'Практическая'},
@@ -8,6 +9,8 @@ const initialState = [
     {number: 300, type: 'Спортивный зал'}];
 
 function classrooms(state = initialState, action) {
+
+    // console.log((API.get('/input-data/input-classrooms/service/reducers/data.json')));
     switch (action.type) {
 
         case ADD_CLASSROOM: {

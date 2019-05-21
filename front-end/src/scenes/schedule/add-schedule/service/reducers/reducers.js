@@ -1,44 +1,17 @@
 import {
     SET_ADDED_SCHEDULE_NAME,
-    ADD_WORKLOAD, SET_SELECTED_LOAD, FILL_SCHEDULE_CELL
+    ADD_WORKLOAD,
+    SET_SELECTED_LOAD,
+    FILL_SCHEDULE_CELL
 } from '../actions/types';
 
 import { DAYS } from './consts';
 
 const initialState = {
     name: '',
-    workLoads: [{
-        classroomType: 'Практическая',
-        teacher: 'Калинин',
-        subject: 'ТМ',
-        lessonsCount: 1
-    }],
+    workLoads: [{}],
     selectedLoad: {},
-    schedule: [[[{
-        group: 1,
-        classroom: '253',
-        teacher: 'Калинин',
-        subject: 'ТМ'
-    }, {
-        group: 1,
-        classroom: '218',
-        teacher: 'Мазаник',
-        subject: 'Мат анализ'
-    }, {
-        group: 1,
-        classroom: '607',
-        teacher: 'Пазюра',
-        subject: 'Программ'
-    }, {
-        classroom: '234',
-        teacher: 'Полойко',
-        subject: 'ДС'
-    }, {
-        classroom: '506',
-        teacher: 'Трубач',
-        subject: 'ДС'
-    }
-    ]]]
+    schedule: [[[{}]]]
 };
 
 function addSchedule(state = initialState, action) {
@@ -49,7 +22,6 @@ function addSchedule(state = initialState, action) {
             const data = action.payload;
             const newState = state.schedule;
             const lessonIndex = +data.lesson.match(/\d+$/)[0];
-            //  console.log('data.lesson.match(/^\\d+$/)] ', newState[data.group].daysData[lessonIndex]);
             const currentDay = data.lesson.match(/[a-zA-Z]/g).join('').toLowerCase();
             const dayIndex = DAYS.indexOf(currentDay);
             let groupData = newState[data.group];

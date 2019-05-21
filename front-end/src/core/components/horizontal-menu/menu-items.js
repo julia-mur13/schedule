@@ -14,10 +14,12 @@ export const MENU_ITEMS = [{
     title: 'Расписание',
     items: [{
         key: 'create_schedule',
-        title: 'Создать'
+        title: 'Создать',
+        userRoles: ['TEACHER']
     }, {
         key: 'all_schedules',
-        title: 'Посмотреть все'
+        title: 'Посмотреть все',
+        userRoles: ['STUDENT', 'TEACHER']
     }]
 }, {
     userRoles: ['TEACHER'],
